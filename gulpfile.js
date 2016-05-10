@@ -1,3 +1,18 @@
+/**
+ ѹ��css(gulp-minify-css)
+ �ϲ��ļ�(gulp-concat)
+ js����У��(gulp-jshint)
+ �ϲ�js�ļ�(gulp-concat)
+ ѹ��js����(gulp-uglify)
+ less����(gulp-less)
+ sass����(gulp-sass)
+ �Զ����cssǰ׺(gulp-autoprefixer)
+ ѹ��ͼƬ(gulp-imagemin)
+ �Զ�ˢ��ҳ��(gulp-livereload)
+ ͼƬ���棬ֻ��ͼƬ�滻�˲�ѹ��(gulp-cache)
+ ��������(gulp-notify)
+ */
+
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
@@ -17,7 +32,7 @@ var paths = {
   useref: ['./www/*.html']
 };
 
-gulp.task('default', ['sass','templatecache','ng_annotate','useref']);
+gulp.task('default', ['sass','templatecache','templatecache-app','ng_annotate','useref']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -39,10 +54,24 @@ gulp.task('templatecache', function (done) {
     .on('end', done);
 });
 
+gulp.task('templatecache-app', function (done) {
+  gulp.src('./www/app/**/*.html')
+    .pipe(templateCache('templates-app.js', {root: ""}))
+    .pipe(gulp.dest('./www/js'))
+    .on('end', done);
+});
+
 gulp.task('ng_annotate', function (done) {
   gulp.src('./www/js/*.js')
     .pipe(ngAnnotate({single_quotes: true}))
     .pipe(gulp.dest('./www/dist/dist_js/app'))
+    .on('end', done);
+});
+
+gulp.task('ng_annotate-app', function (done) {
+  gulp.src('./www/app/**/*.js')
+    .pipe(ngAnnotate({single_quotes: true}))
+    .pipe(gulp.dest('./www/dist/dist_js/app2'))
     .on('end', done);
 });
 
