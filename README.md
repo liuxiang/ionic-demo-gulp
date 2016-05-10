@@ -216,3 +216,6 @@ http://blog.csdn.net/u010730126/article/details/50115579
 
 `如何制作一个发布版的ionic应用？`
 http://rensanning.iteye.com/blog/2205322
+
+`Production ready apps with ionic framework`
+https://www.airpair.com/ionic-framework/posts/production-ready-apps-with-ionic-framework
