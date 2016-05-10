@@ -1,4 +1,5 @@
-# ionic-demo-gulp
+# ionic cordova hook 加密混淆 & gulp[templatecache annotate useref]
+--- 
 
 * （cordova hook）[jshint,async] 检查javascript：这一步需要在代码压缩和代码混淆之前进行以保证javascript代码无错误
 * （gulp task）[gulp-angular-templatecache] 将html页面代码转换为angular的JS代码：这一步起到了混淆html页面代码的作用
@@ -14,6 +15,7 @@
 
 `补充` 
 `npm install uglify-js --save-dev`
+`npm install shelljs --save-dev`
 `npm install clean-css --save-dev`
 `npm install ng-annotate --save-dev`
 
@@ -160,6 +162,11 @@ hooks\after_prepare\060_uglify.js
 * 验证
 `ionic build android/ios`
 
+* platforms\android\build\outputs\apk\ `android-debug.apk` 混淆效果
+![](http://7xnbs3.com1.z0.glb.clouddn.com/16-5-10/29389523.jpg)
+<!--
+-->
+
 ---
 # `gulp-angular-templatecache`插件效果
 * 对html页面代码的混淆是将html页面代码处理成angular的js代码（保存到一个js文件中）
@@ -171,7 +178,9 @@ $templateCache.put("templates/tab-dash.html","<ion-view view-title=\"Dashboard\"
 $templateCache.put("templates/tabs.html","<!--\nCreate tabs with an icon and label, using the tabs-
 $templateCache.put("templates/a/chat-detail.html","<!--\n  This template loads for the \'tab.friend
 ```
-
+![](http://7xnbs3.com1.z0.glb.clouddn.com/16-5-10/61352120.jpg)
+<!--
+-->
 
 # `gulp-ng-annotate`插件效果(启用angular ng-strict-di)
 ```
