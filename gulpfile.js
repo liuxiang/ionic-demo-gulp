@@ -1,16 +1,16 @@
 /**
- ѹ��css(gulp-minify-css)
- �ϲ��ļ�(gulp-concat)
- js����У��(gulp-jshint)
- �ϲ�js�ļ�(gulp-concat)
- ѹ��js����(gulp-uglify)
- less����(gulp-less)
- sass����(gulp-sass)
- �Զ����cssǰ׺(gulp-autoprefixer)
- ѹ��ͼƬ(gulp-imagemin)
- �Զ�ˢ��ҳ��(gulp-livereload)
- ͼƬ���棬ֻ��ͼƬ�滻�˲�ѹ��(gulp-cache)
- ��������(gulp-notify)
+ 压缩css(gulp-minify-css)
+ 合并文件(gulp-concat)
+ js代码校验(gulp-jshint)
+ 合并js文件(gulp-concat)
+ 压缩js代码(gulp-uglify)
+ less编译(gulp-less)
+ sass编译(gulp-sass)
+ 自动添加css前缀(gulp-autoprefixer)
+ 压缩图片(gulp-imagemin)
+ 自动刷新页面(gulp-livereload)
+ 图片缓存，只有图片替换了才压缩(gulp-cache)
+ 更改提醒(gulp-notify)
  */
 
 var gulp = require('gulp');
