@@ -12,7 +12,6 @@
  图片缓存，只有图片替换了才压缩(gulp-cache)
  更改提醒(gulp-notify)
  */
-
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
@@ -56,13 +55,13 @@ gulp.task('templatecache', function (done) {
 
 gulp.task('templatecache-app', function (done) {
   gulp.src('./www/app/**/*.html')
-    .pipe(templateCache('templates-app.js', {root: ""}))
+    .pipe(templateCache('templates-app.js', {root: "app"}))
     .pipe(gulp.dest('./www/js'))
     .on('end', done);
 });
 
 gulp.task('ng_annotate', function (done) {
-  gulp.src('./www/js/*.js')
+  gulp.src('./www/js/**/*.js')
     .pipe(ngAnnotate({single_quotes: true}))
     .pipe(gulp.dest('./www/dist/dist_js/app'))
     .on('end', done);

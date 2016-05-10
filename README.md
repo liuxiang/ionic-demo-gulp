@@ -1,6 +1,3 @@
-# ionic cordova hook 加密混淆 & gulp[templatecache annotate useref]
---- 
-
 * （cordova hook）[jshint,async] 检查javascript：这一步需要在代码压缩和代码混淆之前进行以保证javascript代码无错误
 * （gulp task）[gulp-angular-templatecache] 将html页面代码转换为angular的JS代码：这一步起到了混淆html页面代码的作用
 * （gulp task）[gulp-ng-annotate] 启用angular严格依赖注入：这一步需要在代码混淆之前进行以保证angular的依赖注入没有问题
@@ -12,12 +9,13 @@
 
 * 支持
 `npm install jshint --save-dev & npm install async --save-dev`
+或 `cnpm install jshint --save-dev & cnpm install async --save-dev`
 
 `补充` 
-`npm install uglify-js --save-dev`
-`npm install shelljs --save-dev`
-`npm install clean-css --save-dev`
-`npm install ng-annotate --save-dev`
+`cnpm install uglify-js --save-dev`
+`cnpm install shelljs --save-dev`
+`cnpm install clean-css@2.2.22 --save-dev`
+`cnpm install ng-annotate --save-dev`
 
 
 * 网络获取cordova hooks文件，复制到$PROJECT_DIR/hooks/before_prepare文件夹里
@@ -30,6 +28,7 @@
 # 把html模板转换为angularjs模板
 * 支持
 `npm install gulp-angular-templatecache --save-dev`
+或 `cnpm install gulp-angular-templatecache --save-dev`
 
 * gulpfile.js
 ```
@@ -60,6 +59,7 @@ gulp.task('watch', function() {
 # 启用angular ng-strict-di
 * 支持
 `npm install gulp-ng-annotate --save-dev`
+或`cnpm install gulp-ng-annotate --save-dev`
 
 * gulpfile.js
 ```
@@ -100,6 +100,7 @@ gulp.task('watch', function() {
 # 合并js文件以及css文件
 * 支持
 `npm install gulp-useref@2.1.0 --save-dev`
+或`cnpm install gulp-useref@2.1.0 --save-dev`
 
 * gulpfile.js
 ```
@@ -151,6 +152,7 @@ gulp.task('watch', function() {
 # Cordova Hook 
 * 支持
 `npm install cordova-uglify --save-dev & npm instal mv --save-dev`
+或 `cnpm install cordova-uglify --save-dev & cnpm instal mv --save-dev`
 
 * 网络获取cordova hooks文件，复制到$PROJECT_DIR/hooks/before_prepare文件夹里
 > hooks\after_prepare\020_remove_sass_from_platforms.js
@@ -163,11 +165,12 @@ hooks\after_prepare\060_uglify.js
 `ionic build android/ios`
 
 * platforms\android\build\outputs\apk\ `android-debug.apk` 混淆效果
-![](http://7xnbs3.com1.z0.glb.clouddn.com/16-5-10/29389523.jpg)
+![](http://7xnbs3.com1.z0.glb.clouddn.com/16-5-10/52737274.jpg)
+<!---->
+![](http://7xnbs3.com1.z0.glb.clouddn.com/16-5-10/91724998.jpg)
 <!--
 -->
 
----
 # `gulp-angular-templatecache`插件效果
 * 对html页面代码的混淆是将html页面代码处理成angular的js代码（保存到一个js文件中）
 ```
@@ -214,12 +217,20 @@ $templateCache.put("templates/a/chat-detail.html","<!--\n  This template loads f
     <!-- your app's js -->
     <script src="dist_js/app.js"></script>
 ```
+---
+问题：platforms\android\assets\www\dist_css\styles.css 经过`060_uglify.js`后内容消失
+显示：`[object Object]`
+
+原因：依据代码引用，因`clean-css`插件问题
+最大支持版本clean-css@2.2.22，以上都会出此错误.(或了解新版本，使用新函数)
+https://github.com/jakubpawlowicz/clean-css/blob/master/History.md
 
 ---
 `源码` https://github.com/liuxiang/ionic-demo-gulp.git
 `附件` <见源码>
 
 ---
+**参考**
 `ionic代码压缩与代码混淆 - 菜鸟的学习之路 - 博客频道 - CSDN.NET`
 http://blog.csdn.net/u010730126/article/details/50115579
 
