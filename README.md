@@ -11,18 +11,11 @@
 `npm install jshint --save-dev & npm install async --save-dev`
 或 `cnpm install jshint --save-dev & cnpm install async --save-dev`
 
-`补充` 
-`cnpm install uglify-js --save-dev`
-`cnpm install shelljs --save-dev`
-`cnpm install clean-css@2.2.22 --save-dev`
-`cnpm install ng-annotate --save-dev`
-
-
 * 网络获取cordova hooks文件，复制到$PROJECT_DIR/hooks/before_prepare文件夹里
 `hooks\after_prepare\01_jshint.js `
 `cordova hooks ` http://www.ionic.ren/wp-content/uploads/2015/11/after_prepare.zip
 
-* `验证` 
+* `验证` (注意：仅添加`hooks\after_prepare\01_jshint.js`钩子验证)
 `ionic build android`
 
 # 把html模板转换为angularjs模板
@@ -55,6 +48,18 @@ gulp.task('watch', function() {
 
 * 验证
 `gulp templatecache`
+
+* 补充依赖（实际缺少再装）
+`cnpm install gulp-jshint --save-dev`
+`cnpm install gulp-uglify --save-dev`
+`cnpm install gulp-concat --save-dev`
+`cnpm install gulp-minify-html --save-dev`
+`cnpm install gulp-util --save-dev`
+`cnpm install gulp-minify-css --save-dev`
+`cnpm install gulp-rename --save-dev`
+`cnpm install shelljs --save-dev`
+`cnpm install gulp-ng-annotate --save-dev`
+`cnpm install gulp-useref --save-dev`
 
 # 启用angular ng-strict-di
 * 支持
@@ -164,12 +169,19 @@ hooks\after_prepare\060_uglify.js
 * 验证
 `ionic build android/ios`
 
-* platforms\android\build\outputs\apk\ `android-debug.apk` 混淆效果
+* 补充依赖（实际缺少再装）
+`cnpm install uglify-js --save-dev` -- 060_uglify.js
+`cnpm install clean-css@2.2.22 --save-dev` -- 060_uglify.js
+`cnpm install ng-annotate --save-dev` -- 060_uglify.js
+
+* 结果：platforms\android\build\outputs\apk\ `android-debug.apk` 混淆效果
 ![](http://7xnbs3.com1.z0.glb.clouddn.com/16-5-10/52737274.jpg)
 <!---->
 ![](http://7xnbs3.com1.z0.glb.clouddn.com/16-5-10/91724998.jpg)
 <!--
 -->
+
+---
 
 # `gulp-angular-templatecache`插件效果
 * 对html页面代码的混淆是将html页面代码处理成angular的js代码（保存到一个js文件中）
@@ -239,3 +251,5 @@ http://rensanning.iteye.com/blog/2205322
 
 `Production ready apps with ionic framework`
 https://www.airpair.com/ionic-framework/posts/production-ready-apps-with-ionic-framework
+
+<!-- more -->
